@@ -1,4 +1,4 @@
-package org;
+package compulsory;
 
 public class Main {
 
