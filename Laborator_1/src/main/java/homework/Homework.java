@@ -96,6 +96,7 @@ public class Homework {
         String[][] matrixNeighbors = new String[n][n];
 
 
+
         validateArguments(args);
         read(n,p,m,alphabet,args);
         createWords(n,p,m,alphabet,words);
