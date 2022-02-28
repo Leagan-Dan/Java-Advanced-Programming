@@ -100,7 +100,7 @@ public class Homework {
         validateArguments(args);
         read(n, p, m, alphabet, args);
         createWords(n, p, m, alphabet, words);
-        createMatrix(n, p, alphabet, words, matrix);
+        createMatrix(n, m, alphabet, words, matrix);
         createMatrixNeighbors(n, words, matrix, matrixNeighbors);
         executionTime(startTime);
     }
