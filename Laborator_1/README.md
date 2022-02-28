@@ -1,6 +1,9 @@
 Leagan Dan-Adrian
 
 Homework LAB 1 
+
+Am validat argumentele
+
 Am citit de la tastatura numarul de cuvinte (n), lungimea fiecarui cuvant (p) si literele din alfabet
 
 Am creat cuvinte random folosind literele din alfabetul dat
