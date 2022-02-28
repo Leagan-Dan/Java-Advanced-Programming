@@ -1,3 +1,5 @@
+Leagan Dan-Adrian
+
 Homework LAB 1 
 Am citit de la tastatura numarul de cuvinte (n), lungimea fiecarui cuvant (p) si literele din alfabet
 
