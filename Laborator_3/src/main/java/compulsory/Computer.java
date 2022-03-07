@@ -1,7 +1,7 @@
 package compulsory;
 
 public class Computer extends Node implements Storage, Identifiable {
-    private String IPAddress;
+    private String iPAddress;
     private int storageCapacity;
 
     public Computer() {
@@ -10,19 +10,19 @@ public class Computer extends Node implements Storage, Identifiable {
     //constructor pentru un obiect de tip computer
     public Computer(String IPAddress, int storageCapacity, String name, String hardwareAddress, String location) {
         super(name, hardwareAddress, location);
-        this.IPAddress = IPAddress;
+        this.iPAddress = IPAddress;
         this.storageCapacity = storageCapacity;
     }
 
     //seteaza adresa IP
     public void setIPAddress(String IPAddress) {
-        this.IPAddress = IPAddress;
+        this.iPAddress = IPAddress;
     }
 
     //returneaza adresa IP
     @Override
     public String getIPAddress() {
-        return IPAddress;
+        return iPAddress;
     }
 
     //returneaza capacitatea
