@@ -2,7 +2,7 @@ Leagan Dan-Adrian
 
 Homework Lab 4
 
-Am creat metoda Solution care descrie orasul (stocheaza strazile si intersectiile)
+Am creat clasa Solution care descrie orasul (stocheaza strazile si intersectiile)
 
 Am creat o metoda care afiseaza toate strazile mai lungi decat o valoare, si care intersecteaza macar alte 3 strazi
 
