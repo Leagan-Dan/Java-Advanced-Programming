@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"compulsory","l":"Intersection"},{"p":"homework","l":"Intersection"},{"p":"compulsory","l":"Main"},{"p":"homework","l":"Main"},{"p":"compulsory","l":"Solution"},{"p":"homework","l":"Solution"},{"p":"compulsory","l":"Street"},{"p":"homework","l":"Street"}];updateSearchResults();
