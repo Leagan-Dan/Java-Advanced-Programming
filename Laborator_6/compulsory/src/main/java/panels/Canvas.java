@@ -28,11 +28,11 @@ public class Canvas extends JPanel{
         image = new BufferedImage(
                 canvasWidth, canvasHeight, BufferedImage.TYPE_INT_ARGB);
         offscreen = image.createGraphics();
-        offscreen.setColor(Color.WHITE); //fill the image with white
+        offscreen.setColor(Color.WHITE);
         offscreen.fillRect(0, 0, canvasWidth, canvasHeight);
     }
 
-    private void paintGrid(Graphics2D g) {
+    private void paintGrid(Graphics2D graphics) {
         offscreen.setColor(Color.DARK_GRAY);
         for (int row = 0; row < rows; row++) {
             int x1 = padX;
@@ -93,7 +93,6 @@ public class Canvas extends JPanel{
     public void update(Graphics graphics) {
     }
 
-    //Draw the offscreen image, using the original graphics
     @Override
     protected void paintComponent(Graphics graphics) {
         Graphics2D graphics2D = (Graphics2D) graphics;

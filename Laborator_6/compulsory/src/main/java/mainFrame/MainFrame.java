@@ -2,6 +2,9 @@ package mainFrame;
 
 import javax.swing.*;
 import panels.*;
+import panels.Canvas;
+
+import java.awt.*;
 
 import static java.awt.BorderLayout.*;
 
@@ -13,6 +16,7 @@ public class MainFrame extends JFrame {
 
     public MainFrame() {
         super("My Game");
+        setPreferredSize(new Dimension(800, 900));
         init();
     }
 
