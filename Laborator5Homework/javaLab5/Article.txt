@@ -1,1 +1,0 @@
-{"id":23,"name":"Research-Article","location":"C:\\Users\\Dan\\javaLab5\\Article.txt","theme":"Biology"}

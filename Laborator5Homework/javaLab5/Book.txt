@@ -1,1 +1,0 @@
-{"id":24,"name":"Amintiri din copilarie","location":"C:\\Users\\Dan\\javaLab5\\Book.txt","author":"Ion Creanga","year":1892}
