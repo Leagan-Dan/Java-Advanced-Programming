@@ -71,6 +71,7 @@ public class Canvas extends JPanel{
         this.boardWidth = (cols - 1) * cellWidth;
         this.boardHeight = (rows - 1) * cellHeight;
         setPreferredSize(new Dimension(canvasWidth, canvasHeight));
+        repaint();
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent event) {
