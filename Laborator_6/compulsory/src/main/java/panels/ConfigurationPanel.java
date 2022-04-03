@@ -10,7 +10,7 @@ public class ConfigurationPanel extends JPanel {
     final MainFrame frame;
     JLabel label;
     JSpinner spinner;
-    JSpinner spinnerRowsCols;
+    JSpinner spinnerCols;
 
     public ConfigurationPanel(MainFrame frame) {
         this.frame = frame;
@@ -21,24 +21,23 @@ public class ConfigurationPanel extends JPanel {
     private void init() {
         label = new JLabel("Grid size:");
         spinner = new JSpinner(new SpinnerNumberModel(10, 2, 100, 1));
-        spinnerRowsCols= new JSpinner(new SpinnerNumberModel(0,0,100,1));
+        spinnerCols= new JSpinner(new SpinnerNumberModel(0,0,100,1));
         JButton createButton = new JButton("Create");
 
         add(label);
         add(spinner);
-        add(spinnerRowsCols);
+        add(spinnerCols);
         add(createButton);
 
         createButton.addActionListener(this::createGame);
     }
 
     private void createGame(ActionEvent event){
-        System.out.println("create");
         this.rows=10;
         this.cols=10;
-        int valueSpinner = (Integer) spinner.getValue();
-        int valueSpinnerRowsCols = (Integer) spinnerRowsCols.getValue();
-        frame.canvas.init(valueSpinnerRowsCols,valueSpinnerRowsCols);
+        int valueSpinnerRows = (Integer) spinner.getValue();
+        int valueSpinnerCols = (Integer) spinnerCols.getValue();
+        frame.canvas.init(valueSpinnerRows,valueSpinnerCols);
     }
 
     public int getRows() {
