@@ -45,7 +45,8 @@ public class Canvas extends JPanel {
      * Listens for any clicks, to draw the blue or red stones, depending on the turn
      */
     private void paintGrid(Graphics2D graphics) {
-        offscreen.setColor(Color.DARK_GRAY);
+        offscreen.setStroke(new BasicStroke(1));
+        offscreen.setColor(Color.LIGHT_GRAY);
         for (int row = 0; row < rows; row++) {
             int x1 = padX;
             int y1 = padY + row * cellHeight;
@@ -69,37 +70,38 @@ public class Canvas extends JPanel {
                 int rand_int1 = rand.nextInt(1000);
                 int x = padX + col * cellWidth;
                 int y = padY + row * cellHeight;
-                offscreen.setColor(Color.LIGHT_GRAY);
+                offscreen.setColor(Color.DARK_GRAY);
                 offscreen.drawOval(x - stoneSize / 2, y - stoneSize / 2, stoneSize, stoneSize);
-                JLabel label= new JLabel();
+                JLabel label = new JLabel();
                 label.setBounds(x - stoneSize / 2, y - stoneSize / 2, stoneSize, stoneSize);
                 label.setOpaque(false);
                 label.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent event) {
-                        drawStone(x,y);
+                        drawStone(x, y);
                         repaint();
                     }
                 });
                 this.add(label);
                 this.setVisible(true);
-
-                if(this.firstDraw) {
-                    if ((rand_int1) % 2 == 0) {
-                        offscreen.drawLine(x, y, padX + (col + 1) * cellWidth, padY + (row) * cellHeight);
-                        offscreen.drawLine(x, y, padX + (col) * cellWidth, padY + (row + 1) * cellHeight);
+                offscreen.setStroke(new BasicStroke(5));
+                if (row < rows-1 && col < cols-1) {
+                    if (this.firstDraw) {
+                        if ((rand_int1) % 2 == 0) {
+                            offscreen.drawLine(x, y, padX + (col + 1) * cellWidth, padY + (row) * cellHeight);
+                            offscreen.drawLine(x, y, padX + (col) * cellWidth, padY + (row + 1) * cellHeight);
+                        }
+                        this.arrayRandom[indexRandom] = rand_int1;
+                        this.indexRandom++;
+                    } else {
+                        if (this.arrayRandom[this.indexRandom] % 2 == 0) {
+                            offscreen.drawLine(x, y, padX + (col + 1) * cellWidth, padY + (row) * cellHeight);
+                            offscreen.drawLine(x, y, padX + (col) * cellWidth, padY + (row + 1) * cellHeight);
+                        }
+                        this.indexRandom++;
                     }
-                    this.arrayRandom[indexRandom] = rand_int1;
-                    this.indexRandom++;
                 }
-                else
-                {
-                    if(this.arrayRandom[this.indexRandom]%2==0){
-                        offscreen.drawLine(x, y, padX + (col + 1) * cellWidth, padY + (row) * cellHeight);
-                        offscreen.drawLine(x, y, padX + (col) * cellWidth, padY + (row + 1) * cellHeight);
-                    }
-                    this.indexRandom++;
-                }
+                offscreen.setStroke(new BasicStroke(1));
             }
         }
         this.firstDraw=false;
