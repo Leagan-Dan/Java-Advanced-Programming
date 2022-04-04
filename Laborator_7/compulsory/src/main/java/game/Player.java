@@ -31,11 +31,9 @@ public class Player implements Runnable {
         }
         this.auxPoints=this.auxPoints*extracted.size();
 
-        //create a word with all the extracted tiles;
-
         game.getBoard().addWord(this, word);
         Thread.sleep(50);
-        //make the player sleep 50ms;
+
         return true;
     }
 
