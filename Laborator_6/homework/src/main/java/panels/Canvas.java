@@ -42,6 +42,7 @@ public class Canvas extends JPanel {
 
     /**
      * Paints the rows, columns, circles and random sticks, on the grid
+     * Listens for any clicks, to draw the blue or red stones, depending on the turn
      */
     private void paintGrid(Graphics2D graphics) {
         offscreen.setColor(Color.DARK_GRAY);
@@ -61,8 +62,8 @@ public class Canvas extends JPanel {
             offscreen.drawLine(y1, x1, y2, x2);
         }
 
-        Random rand = new Random();
-        this.indexRandom = 0;
+        Random rand=new Random();
+        this.indexRandom=0;
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 int rand_int1 = rand.nextInt(1000);
@@ -70,39 +71,44 @@ public class Canvas extends JPanel {
                 int y = padY + row * cellHeight;
                 offscreen.setColor(Color.LIGHT_GRAY);
                 offscreen.drawOval(x - stoneSize / 2, y - stoneSize / 2, stoneSize, stoneSize);
+                JLabel label= new JLabel();
+                label.setBounds(x - stoneSize / 2, y - stoneSize / 2, stoneSize, stoneSize);
+                label.setOpaque(false);
+                label.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mousePressed(MouseEvent event) {
+                        drawStone(x,y);
+                        repaint();
+                    }
+                });
+                this.add(label);
+                this.setVisible(true);
 
-                if (this.firstDraw) {
+                if(this.firstDraw) {
                     if ((rand_int1) % 2 == 0) {
                         offscreen.drawLine(x, y, padX + (col + 1) * cellWidth, padY + (row) * cellHeight);
                         offscreen.drawLine(x, y, padX + (col) * cellWidth, padY + (row + 1) * cellHeight);
                     }
                     this.arrayRandom[indexRandom] = rand_int1;
                     this.indexRandom++;
-                } else {
-                    if (this.arrayRandom[this.indexRandom] % 2 == 0) {
+                }
+                else
+                {
+                    if(this.arrayRandom[this.indexRandom]%2==0){
                         offscreen.drawLine(x, y, padX + (col + 1) * cellWidth, padY + (row) * cellHeight);
                         offscreen.drawLine(x, y, padX + (col) * cellWidth, padY + (row + 1) * cellHeight);
                     }
                     this.indexRandom++;
                 }
-
-                /*JButton button = new JButton("");
-                Dimension size = button.getPreferredSize();
-                button.setContentAreaFilled(false);
-                button.setBorder(null);
-                button.setBounds(x - stoneSize / 2, y - stoneSize / 2, stoneSize, stoneSize);
-                add(button);*/
             }
         }
-        this.firstDraw = false;
+        this.firstDraw=false;
 
 
     }
 
     /**
-     * Initializes the frame and listens for mouse clicks
-     * @param rows indicates the number of rows
-     * @param cols indicates the number of columns
+     * Initializes the frame
      */
     final void init(int rows, int cols) {
         this.rows = rows;
@@ -114,15 +120,8 @@ public class Canvas extends JPanel {
         this.boardWidth = (cols - 1) * cellWidth;
         this.boardHeight = (rows - 1) * cellHeight;
         setPreferredSize(new Dimension(canvasWidth, canvasHeight));
-        this.firstDraw = true;
+        this.firstDraw=true;
         repaint();
-        this.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent event) {
-                drawStone(event.getX(), event.getY());
-                repaint();
-            }
-        });
     }
 
     /**
