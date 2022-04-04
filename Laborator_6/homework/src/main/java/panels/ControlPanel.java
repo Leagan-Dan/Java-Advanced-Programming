@@ -31,7 +31,13 @@ public class ControlPanel extends JPanel {
         add(saveBtn);
 
         exitBtn.addActionListener(this::exitGame);
-        loadBtn.addActionListener(this::loadGame);
+        loadBtn.addActionListener(event -> {
+            try {
+                loadGame(event);
+            } catch (LoadException exception) {
+                exception.printStackTrace();
+            }
+        });
         saveBtn.addActionListener(this::saveGame);
     }
 
@@ -47,11 +53,14 @@ public class ControlPanel extends JPanel {
      * Loads a PNG file from the path chosen, and sets that image on the main frame
      * @param event indicates that the button "Load" was pressed
      */
-    private void loadGame(ActionEvent event){
+    private void loadGame(ActionEvent event) throws LoadException {
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter extension = new FileNameExtensionFilter("PNG", "png");
         chooser.setFileFilter(extension);
         if (chooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
+
+            if(!chooser.getSelectedFile().exists())
+                throw new LoadException();
             try {
                 frame.getCanvas().setImage(ImageIO.read(chooser.getSelectedFile()));
             } catch (Exception exception) {

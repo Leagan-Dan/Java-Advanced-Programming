@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 import java.util.Vector;
 import java.util.Random;
 
@@ -24,12 +25,17 @@ public class Canvas extends JPanel {
     int[] arrayRandom;
     int indexRandom = 0;
     boolean firstDraw = true;
+    int [][] stonesMatrix;
+    boolean finish=false;
 
     public Canvas(MainFrame frame) {
         this.frame = frame;
         createOffscreenImage();
         this.arrayRandom = new int[1000];
         this.firstDraw = true;
+        this.stonesMatrix=new int[11][11];
+        for(int[] arr1 : stonesMatrix)
+            Arrays.fill(arr1, -1);
     }
 
     public void createOffscreenImage() {
@@ -43,6 +49,8 @@ public class Canvas extends JPanel {
     /**
      * Paints the rows, columns, circles and random sticks, on the grid
      * Listens for any clicks, to draw the blue or red stones, depending on the turn
+     * Uses stonesMatrix to validate and update any stone drawn
+     * If there is no other place to draw a stone, the winner is announced
      */
     private void paintGrid(Graphics2D graphics) {
         offscreen.setStroke(new BasicStroke(1));
@@ -75,10 +83,28 @@ public class Canvas extends JPanel {
                 JLabel label = new JLabel();
                 label.setBounds(x - stoneSize / 2, y - stoneSize / 2, stoneSize, stoneSize);
                 label.setOpaque(false);
+                int finalRow = row;
+                int finalCol = col;
                 label.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent event) {
-                        drawStone(x, y);
+                        if(stonesMatrix[finalRow][finalCol]==0) {
+                            drawStone(x, y);
+                            stonesMatrix[finalRow][finalCol] = 1;
+                            finish = true;
+                            for (int index1 = 0; index1 < rows; index1++) {
+                                for (int index2 = 0; index2 < cols; index2++) {
+                                    if (stonesMatrix[index1][index2] == 0)
+                                        finish = false;
+                                }
+                            }
+                            if (finish) {
+                                if (blueStone)
+                                    System.out.println("Red player wins");
+                                else
+                                    System.out.println("Blue player wins");
+                            }
+                        }
                         repaint();
                     }
                 });
@@ -90,6 +116,9 @@ public class Canvas extends JPanel {
                         if ((rand_int1) % 2 == 0) {
                             offscreen.drawLine(x, y, padX + (col + 1) * cellWidth, padY + (row) * cellHeight);
                             offscreen.drawLine(x, y, padX + (col) * cellWidth, padY + (row + 1) * cellHeight);
+                            stonesMatrix[row][col]=0;
+                            stonesMatrix[row][col+1]=0;
+                            stonesMatrix[row+1][col]=0;
                         }
                         this.arrayRandom[indexRandom] = rand_int1;
                         this.indexRandom++;
