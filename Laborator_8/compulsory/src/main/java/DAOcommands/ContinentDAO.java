@@ -6,15 +6,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ContinentDAO {
-    public void findById(int id, Connection connection) throws ClassNotFoundException, SQLException {
+    public String findById(int id, Connection connection) throws ClassNotFoundException, SQLException {
 
+        String result = null;
         PreparedStatement statement = connection.prepareStatement("select * from continents where id =?");
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
 
         while (resultSet.next()) {
-            System.out.println(resultSet.getInt(1) + " " + resultSet.getString(2));
+            result="";
+            int idResult = resultSet.getInt(1);
+            String nameResult= resultSet.getString(2);
+            result=result + idResult + " " + nameResult;
+            System.out.println(result);
         }
+        return result;
     }
 
     public void findByName(String name, Connection connection) throws SQLException {

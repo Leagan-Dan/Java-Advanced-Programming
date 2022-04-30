@@ -10,7 +10,9 @@ public class Database {
     private static final String PASSWORD = "STUDENT";
     private Connection connection;
 
-    public Database() {
+    public Database() throws ClassNotFoundException {
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+        this.createConnection();
     }
 
     public void createConnection() {
@@ -26,12 +28,12 @@ public class Database {
         return this.connection;
     }
 
-    public static Database getDBConnection() {
+    public static Database getDBConnection() throws ClassNotFoundException {
         Database dbConnection = new Database();
         return dbConnection;
     }
 
-    public static void closeConnection() {
-        /* TODO*/
+    public void closeConnection() throws SQLException {
+        connection.close();
     }
 }
