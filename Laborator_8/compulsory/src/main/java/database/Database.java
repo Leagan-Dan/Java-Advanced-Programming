@@ -15,7 +15,7 @@ public class Database {
         this.createConnection();
     }
 
-    public void createConnection() {
+    private void createConnection() {
         try {
             this.connection = DriverManager.getConnection(URL, USER, PASSWORD);
             connection.setAutoCommit(false);
@@ -28,12 +28,4 @@ public class Database {
         return this.connection;
     }
 
-    public static Database getDBConnection() throws ClassNotFoundException {
-        Database dbConnection = new Database();
-        return dbConnection;
-    }
-
-    public void closeConnection() throws SQLException {
-        connection.close();
-    }
 }
