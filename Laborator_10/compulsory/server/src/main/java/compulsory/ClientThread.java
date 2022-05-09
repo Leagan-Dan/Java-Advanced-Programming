@@ -22,11 +22,8 @@ public class ClientThread extends Thread {
             String command = in.readLine();
 
             out = new PrintWriter(socket.getOutputStream());
-            String raspuns = "Server received the request: " + command;
 
             handleCommand(command);
-            out.println(raspuns);
-            out.flush();
 
         } catch (IOException e) {
             System.err.println("Communication error... " + e);
@@ -42,6 +39,31 @@ public class ClientThread extends Thread {
             out.flush();
             in.close();
             server.stop();
+        }
+        else if(command.equals("register")){
+            String raspuns = "Server received the request: " + command;
+            out.println(raspuns);
+            out.flush();
+        }
+        else if(command.equals("login")){
+            String raspuns = "Server received the request: " + command;
+            out.println(raspuns);
+            out.flush();
+        }
+        else if(command.equals("send")){
+            String raspuns = "Server received the request: " + command;
+            out.println(raspuns);
+            out.flush();
+        }
+        else if(command.equals("read")){
+            String raspuns = "Server received the request: " + command;
+            out.println(raspuns);
+            out.flush();
+        }
+        else{
+            String raspuns = "Unknown command";
+            out.println(raspuns);
+            out.flush();
         }
     }
 }
