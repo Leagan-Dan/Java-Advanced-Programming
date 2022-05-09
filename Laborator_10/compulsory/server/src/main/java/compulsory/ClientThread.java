@@ -32,7 +32,7 @@ public class ClientThread extends Thread {
             System.err.println("Communication error... " + e);
         } finally {
             try {
-                socket.close(); // or use try-with-resources
+                socket.close();
             } catch (IOException e) { System.err.println (e); }
         }
     }
