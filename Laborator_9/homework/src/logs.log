@@ -16,4 +16,40 @@
   2022-05-09 10:38:14 DEBUG StatisticsImpl:692 - HHH000117: HQL: select e from Country e order by e.name, time: 2ms, rows: 72
   2022-05-09 10:38:14 DEBUG StatisticsImpl:692 - HHH000117: HQL: select e from City e order by e.id, time: 24ms, rows: 710
   2022-05-09 10:38:14 DEBUG StatisticsImpl:692 - HHH000117: HQL: select a from City a where a.name='Bucuresti', time: 0ms, rows: 1
+  2022-05-09 17:26:52 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: Lab9]
+  2022-05-09 17:26:52 INFO  Version:44 - HHH000412: Hibernate ORM core version 5.6.5.Final
+  2022-05-09 17:26:53 INFO  Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+  2022-05-09 17:26:53 WARN  pooling:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+  2022-05-09 17:26:53 INFO  pooling:115 - HHH10001005: using driver [oracle.jdbc.driver.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+  2022-05-09 17:26:53 INFO  pooling:124 - HHH10001001: Connection properties: {password=****, user=STUDENT}
+  2022-05-09 17:26:53 INFO  pooling:129 - HHH10001003: Autocommit mode: false
+  2022-05-09 17:26:53 INFO  DriverManagerConnectionProviderImpl:274 - HHH000115: Hibernate connection pool size: 20 (min=1)
+  2022-05-09 17:26:53 INFO  Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.Oracle8iDialect
+  2022-05-09 17:26:53 INFO  access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3f92a84e] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+  2022-05-09 17:26:53 INFO  JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+  2022-05-09 17:26:53 DEBUG StatisticsInitiator:101 - Statistics initialized [enabled=true]
+  2022-05-09 17:26:54 DEBUG StatisticsImpl:692 - HHH000117: HQL: select e from Continent e order by e.name, time: 6ms, rows: 32
+  2022-05-09 17:26:54 DEBUG StatisticsImpl:692 - HHH000117: HQL: select a from Continent a where a.name='America2', time: 1ms, rows: 17
+  2022-05-09 17:26:54 DEBUG StatisticsImpl:692 - HHH000117: HQL: select a from Country a where a.name='Belgium', time: 4ms, rows: 55
+  2022-05-09 17:26:54 DEBUG StatisticsImpl:692 - HHH000117: HQL: select e from Country e order by e.name, time: 2ms, rows: 73
+  2022-05-09 17:26:54 DEBUG StatisticsImpl:692 - HHH000117: HQL: select e from City e order by e.id, time: 22ms, rows: 711
+  2022-05-09 17:26:54 DEBUG StatisticsImpl:692 - HHH000117: HQL: select a from City a where a.name='Bucuresti', time: 0ms, rows: 1
+  2022-05-27 21:06:42 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: Lab9]
+  2022-05-27 21:06:42 INFO  Version:44 - HHH000412: Hibernate ORM core version 5.6.5.Final
+  2022-05-27 21:06:42 INFO  Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+  2022-05-27 21:06:42 WARN  pooling:72 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+  2022-05-27 21:06:42 INFO  pooling:115 - HHH10001005: using driver [oracle.jdbc.driver.OracleDriver] at URL [jdbc:oracle:thin:@localhost:1521:xe]
+  2022-05-27 21:06:42 INFO  pooling:124 - HHH10001001: Connection properties: {password=****, user=STUDENT}
+  2022-05-27 21:06:42 INFO  pooling:129 - HHH10001003: Autocommit mode: false
+  2022-05-27 21:06:42 INFO  DriverManagerConnectionProviderImpl:274 - HHH000115: Hibernate connection pool size: 20 (min=1)
+  2022-05-27 21:06:42 INFO  Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.Oracle8iDialect
+  2022-05-27 21:06:43 INFO  access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3f92a84e] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+  2022-05-27 21:06:43 INFO  JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+  2022-05-27 21:06:43 DEBUG StatisticsInitiator:101 - Statistics initialized [enabled=true]
+  2022-05-27 21:06:43 DEBUG StatisticsImpl:692 - HHH000117: HQL: select e from Continent e order by e.name, time: 13ms, rows: 33
+  2022-05-27 21:06:43 DEBUG StatisticsImpl:692 - HHH000117: HQL: select a from Continent a where a.name='America2', time: 1ms, rows: 18
+  2022-05-27 21:06:43 DEBUG StatisticsImpl:692 - HHH000117: HQL: select a from Country a where a.name='Belgium', time: 6ms, rows: 56
+  2022-05-27 21:06:43 DEBUG StatisticsImpl:692 - HHH000117: HQL: select e from Country e order by e.name, time: 3ms, rows: 74
+  2022-05-27 21:06:43 DEBUG StatisticsImpl:692 - HHH000117: HQL: select e from City e order by e.id, time: 27ms, rows: 712
+  2022-05-27 21:06:43 DEBUG StatisticsImpl:692 - HHH000117: HQL: select a from City a where a.name='Bucuresti', time: 1ms, rows: 1
   
